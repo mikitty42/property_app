@@ -1,0 +1,40 @@
+<%= form_with(modle: @property,local: true) do |form| %>
+    <% if @property.errors.any? %>
+        <div id='error_explanation'>
+            <ul>
+                <p><%= @property.errors.count %>件のエラーがあります</p>
+                    <% @property.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
+    <div id='property_property_name'>
+        <%= form.label :property_name %>
+        <%= form.text_field :property_name %>
+    </div>
+    
+    <div id='property_property_rent'>
+        <%= form.label :rent %>
+        <%= form.number_field :rent %>
+    </div>
+    
+    <div id='property_property_address'>
+        <%= form.label :address %>
+        <%= form.text_field :address %>
+    </div>
+    
+    <div id='property_property_age'>
+        <%= form.label :age %>
+        <%= form.number_field :age %>
+    </div>
+    
+    <div id='property_property_remarks'>
+        <%= form.label :remarks %>
+        <%= form.text_field :remarks %>
+    </div>
+    
+    <%= form.submit '登録する' %>
+<% end %>
+                
