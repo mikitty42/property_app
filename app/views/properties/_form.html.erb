@@ -1,4 +1,4 @@
-<%= form_with(modle: @property,local: true) do |form| %>
+<%= form_with(model: @property,local: true) do |form| %>
     <% if @property.errors.any? %>
         <div id='error_explanation'>
             <ul>
@@ -11,29 +11,49 @@
     <% end %>
     
     <div id='property_property_name'>
-        <%= form.label :property_name %>
+        <%= form.label :物件名 %>
         <%= form.text_field :property_name %>
     </div>
     
-    <div id='property_property_rent'>
-        <%= form.label :rent %>
-        <%= form.number_field :rent %>
+    <div id='property_rent'>
+        <%= form.label :賃料 %>
+        <%= form.text_field :rent %>円
     </div>
     
-    <div id='property_property_address'>
-        <%= form.label :address %>
+    <div id='property_address'>
+        <%= form.label :住所 %>
         <%= form.text_field :address %>
     </div>
     
-    <div id='property_property_age'>
-        <%= form.label :age %>
-        <%= form.number_field :age %>
+    <div id='property_age'>
+        <%= form.label :築年数 %>
+        <%= form.text_field :age %>年
     </div>
     
-    <div id='property_property_remarks'>
-        <%= form.label :remarks %>
-        <%= form.text_field :remarks %>
+    <div id='property_remarks'>
+        <%= form.label :備考 %>
+        <%= form.text_area :remarks %>
     </div>
+    
+    <hr>
+    
+    <%= form.fields_for :nearest_stations do |g| %>
+        
+        <div id='nearest_station_route_name'>
+            <%= g.label :路線名 %>
+            <%= g.text_field :route_name %>
+         </div>
+        
+        <div id='nearest_station_station_name'>
+            <%= g.label :駅名 %>
+            <%= g.text_field :station_name %>
+        </div>
+        
+        <div id='nearest_station_walking_minutes'>
+            <%= g.label :徒歩分数 %>
+            <%= g.text_field :walking_minutes %>分
+        </div>
+    <% end %>
     
     <%= form.submit '登録する' %>
 <% end %>
